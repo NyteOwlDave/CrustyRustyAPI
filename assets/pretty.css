@@ -1,0 +1,64 @@
+
+:root {
+    --table-bgnd: #FFEEDD;
+    --table-fgnd: #001122;
+    --odd-bgnd: #223344;
+    --even-bgnd: #334455;
+}
+
+table[pretty] {
+    border: 0;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 50px;
+}
+
+table[pretty] thead {
+    font-size: x-large;
+}
+
+table[pretty] thead tr {
+    color: var(--table-fgnd);
+    background-color: var(--table-bgnd);
+}
+
+table[pretty] tr {
+    font: inherit;
+}
+
+table[pretty] tbody tr:nth-child(odd) {
+    background-color: var(--odd-bgnd);
+}
+
+table[pretty] tbody tr:nth-child(even) {
+    background-color: var(--even-bgnd);
+}
+
+table[pretty] th, table[pretty] td {
+    font: inherit;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+fieldset[pretty] {
+    border: 1px solid var(--fgnd);
+    border-radius: 1em;
+    width: calc(100% - 2em);
+    margin-bottom: 20px;
+}
+
+fieldset[pretty] legend {
+    border: 1px solid var(--fgnd);
+    color: var(--bgnd);
+    background-color: var(--fgnd);
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 1em;
+    user-select: none;
+    cursor: not-allowed;
+}
+
+fieldset[pretty] legend[clickable] {
+    cursor: pointer;
+}
+

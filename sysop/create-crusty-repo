@@ -1,0 +1,13 @@
+#!/bin/bash
+
+function create_crusty() {
+  gh repo clone NyteOwlDave/CrustyRustyAPI
+}
+
+clear
+echo "Creating Crusty Rusty Repository..."
+
+create_crusty
+
+# SSH
+# git@github.com:NyteOwlDave/CrustyRustyAPI.git

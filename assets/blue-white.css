@@ -1,0 +1,187 @@
+
+:root {
+    --fgnd: #FFEEDD;
+    --bgnd: #001122;
+}
+
+body {
+    color: var(--fgnd);
+    background-color: var(--bgnd);
+    margin: 0;
+    padding: 0;
+}
+
+main, footer {
+    margin: 5px;
+}
+
+h2 {
+    width: 100%;
+    text-align: right;
+    border-top: 1px solid gray;
+    color: lemonchiffon;
+}
+
+h2:after {
+    content: "@";
+    color: transparent;
+}
+
+header {
+    color: var(--bgnd);
+    background-color: var(--fgnd);
+    font: 20pt Helvetica;
+    text-align: center;
+}
+
+footer {
+    margin-top: 800px;
+}
+
+code {
+    color: skyblue;
+    font-weight: 900;
+}
+
+pre {
+    background-color: #225;
+    padding: 1em;
+}
+
+pre.signature {
+    text-align: right;
+    align-content: right;
+    color: skyblue;
+    background-color: #202010;
+    font-weight: 900;
+    border-radius: 5px;
+}
+
+b, figcaption {
+    color: #FFFF9E
+}
+
+figcaption {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+kbd {
+    border: 1px solid #222;
+    border-radius: 5px;
+    background-color: gray;
+    color: black;
+    font-family: monospace;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.indent {
+    padding-left: 10px;
+}
+
+/*
+================================
+*/
+
+/*
+// INCLUDE pretty.css for this
+fieldset {
+    border: 1px solid var(--fgnd);
+    border-radius: 1em;
+    width: calc(100% - 2em);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+legend {
+    border: 1px solid var(--fgnd);
+    color: var(--bgnd);
+    background-color: var(--fgnd);
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 1em;
+}
+*/
+
+/*
+
+#idScript {
+    resize: vertical;
+    border: 0;
+    width: 100%;
+    font-family: monospace;
+    background-color: #00070E;
+}
+
+#idScript {
+    border: 0;
+    width: 100%;
+    font-size: 16pt;
+    font-family: monospace;
+}
+*/
+
+/*
+
+// INCLUDE sticky.css for this
+
+header {
+    position: sticky;
+    color: var(--bgnd);
+    background-color: var(--fgnd);
+    text-align: center;
+    align-content: center;
+    width: 100%;
+    margin: 0;
+    font: 20pt Helvetica;
+    top: 0;
+    left: 0;
+}
+
+*/
+
+/*
+body {
+    margin: 0;
+    padding: 0;
+    color: var(--fgnd);
+    background-color: var(--bgnd);
+}
+main, footer {
+    margin: 5px;
+}
+fieldset {
+    border: 1px solid var(--fgnd);
+    border-radius: 1em;
+    width: calc(100% - 2em);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+legend {
+    border: 1px solid var(--fgnd);
+    color: var(--bgnd);
+    background-color: var(--fgnd);
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 1em;
+}
+header {
+    position: sticky;
+    color: var(--bgnd);
+    background-color: var(--fgnd);
+    text-align: center;
+    align-content: center;
+    width: 100%;
+    margin: 0;
+    font: 20pt Helvetica;
+    top: 0;
+    left: 0;
+}
+a {
+    color: gold;
+}
+a:visited {
+    color: #9C9C9C;
+}
+
+*/
