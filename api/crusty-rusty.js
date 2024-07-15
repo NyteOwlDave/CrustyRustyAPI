@@ -26,12 +26,12 @@ _icon.prefixkey = (key,s) => _icon.prefix(CrustyRusty.icon[key], s);
 _icon.success   = _icon(3);
 _icon.failure   = _icon(4);
 _icon.todo      = `${_icon(1)} This is a proposed future enhancement`;
-_icon.prefixn(0, `The famous CrustyRusty has 🎉arrived🎉 in style!`);
+// _icon.prefixn(0, `The famous CrustyRusty has 🎉arrived🎉 in style!`);
 
 //------------------------------------------------------
 _log = function(args) {
     if (args instanceof Object) {
-        console.log( ... args ); 
+        console.log( ... args );
     } else {
         console.log( ... arguments );
     }
@@ -39,11 +39,11 @@ _log = function(args) {
 }
 _log(_icon.prefixn(0, `The famous CrustyRusty has 🎉arrived🎉 in style!`));
 _log.warning = s => {
-    console.warn(s); 
+    console.warn(s);
     return _icon.success;
-} 
+}
 _log.error   = s => {
-    console.error(s); 
+    console.error(s);
     return _icon.success;
 }
 _log.open  = title => {
@@ -57,7 +57,7 @@ _log.close = () => {
 _log.complete = (title, args) => {
     try {
         _log.open(title);
-        return _log(args);    
+        return _log(args);
     } catch(error) {
         _log.close();
         return _icon.failure;
@@ -81,7 +81,7 @@ _log.look = s => {
     const icon = CrustyRusty.icon.look;
     return _log(_icon.prefix(icon, s));
 }
-let _is_node_js_ = false; // TBT later
+let _is_node_js_ = false; // TBD later
 const __oops = () => {
     throw new Error("🤔 You forgot something!");
 }
@@ -89,7 +89,7 @@ const __oops = () => {
 //------------------------------------------------------
 // The big daddy!
 const CrustyRusty = {
-    version  : '2023-AUG-24',
+    version  : '2023-DEC-02',
     comment  : "Designed for the CrustyRusty API Series",
     tipme    : () => {
         const url = CrustyRusty.link['☕'];
@@ -142,7 +142,7 @@ const CrustyRusty = {
             const p = me.icon.warning;
             const s = "Merging APIs";
             me.says(_icon.prefix(p, s));
-            const old = me.api[key]; 
+            const old = me.api[key];
             const add = initfn();
             me.api[key] = {
                 ... old,
@@ -155,9 +155,9 @@ const CrustyRusty = {
     }
 };
 CrustyRusty.link = {};
-CrustyRusty.link['☕'] = 
+CrustyRusty.link['☕'] =
 `https://www.buymeacoffee.com/nyteowldave`;
-CrustyRusty.link.dave = 
+CrustyRusty.link.dave =
 `https://sites.google.com/view/dave-wellsted-nyteowl/`;
 
 
@@ -169,7 +169,7 @@ CrustyRusty.link.dave =
 
 function exec(boss) {
     const LOOK = boss.look;
-    const TODO = boss.todo;        
+    const TODO = boss.todo;
     if (typeof _is_node_js_ == 'undefined') {
         console.error("🚨 _is_node_js_ is undefined!")
         throw "🚨 This is NOT a CrustyRusty 🦀 approved app!";
@@ -207,12 +207,12 @@ function init() {
         title       : "Reporting API",
         version     : boss.version,
         comment     : boss.comment,
-        emojis      : _emojiset1, 
-        icon        : _icon, 
-        log         : _log, 
+        emojis      : _emojiset1,
+        icon        : _icon,
+        log         : _log,
         oops        : __oops,
         is_node_js  : () => { return _is_node_js_; }
-    };    
+    };
 
     return _reporting_api;
 }
@@ -237,14 +237,14 @@ function init() {
 
     // Forward lookup (name from index)
     const _typenames = [
-        "undefined", 
-        "boolean",  
+        "undefined",
+        "boolean",
         "number",
         "string",
-        "bigint",   
+        "bigint",
         "symbol",
-        "function",  
-        "object",   
+        "function",
+        "object",
     ];
 
     // Reverse lookup (index from name)
@@ -265,10 +265,10 @@ function init() {
     };
 
     const _isinst     = (o, s) => (o instanceof s);
-    
+
     const _istypename = (o, t) => (typeof o === t);
     const _istypecode = (o, n) => (_istypename(o,_typenames[n]));
-    
+
     const _isundef    = o => (_istypecode(o,_typecodes.undefined));
     const _isbool     = o => (_istypecode(o,_typecodes.boolean));
     const _isnum      = o => (_istypecode(o,_typecodes.number));
@@ -277,27 +277,27 @@ function init() {
     const _issym      = o => (_istypecode(o,_typecodes.symbol));
     const _isfn       = o => (_istypecode(o,_typecodes.function));
     const _isobj      = o => (_istypecode(o,_typecodes.object));
-    
+
     const _isdef      = o => (!isundef(o));
     const _isnull     = o => (o===null);
-    const _isarray    = o => (Array.isArray(o));    
+    const _isarray    = o => (Array.isArray(o));
     const _isint      = o => (Number.isInteger(o));
-    
-    const _isnan      = o => (isNaN(o));    
+
+    const _isnan      = o => (isNaN(o));
     const _isfin      = o => (isFinite(o));
     const _isinf      = o => (!isfin(o));
-    
+
     const _iszero     = n => (n===0);
     const _isone      = n => (n===1);
     const _isnotzero  = n => (_isnum(n)&&(!_iszero(n)));
     const _isnotone   = n => (_isnum(n)&&(!_isone(n)));
-    
+
     const _isneg      = n => (n<0);
     const _ispos      = n => (n>0);
-    
+
     const _haswhole   = n => (_isnum(n)&&((n%1)===n));
     const _hasfrac    = n => (_isnum(n)&&(n%1));
-    
+
     const _istiny     = n => {
         return (n*n) <= _state.tiny;
     }
@@ -311,7 +311,7 @@ function init() {
         return !(_istiny(n)||_ishuge(n));
     }
     const _isapprox   = (a, b)  => {
-        TODO("_isapprox");
+        return _istiny(a-b);
     }
     const _iswithin   = (n,a,b) => {
         if (isnan(n)) return false;
@@ -321,25 +321,24 @@ function init() {
         const v = Math.max(a, b);
         return ((u<=n)&&(n<=v));
     }
-    
+
     const _typename = o => {
         if (_isinf(o)) return 'infinity';
         if (_isnull(o)) return 'null';
-        TODO("_typename");
+        return (typeof o);
     }
     const _typecode = o => {
-        TODO("_typecode");
-//        if (isinf) return types[];
+        return _typecodes[_typename(o)];
     }
-    
+
     const _isiterable   = o => (_istypename(o[Symbol.iterator],'function'));
     const _isenumerable = (o, k) => {
         const desc = Object.getOwnPropertyDescriptor(o, k);
         return desc.enumerable;
     }
-    
+
     const _isiterator   = fn => {
-        TODO("_isiterator"); 
+        TODO("_isiterator");
     }
     const _isgenerator  = fn => {
         TODO("_isgenerator");
@@ -349,29 +348,32 @@ function init() {
     }
 
     // Number classification (advanced)
-    _isnatural = n => (_isint(n)&&(n>0));
-    _iswhole   = n => {_isint(n)&&(n>=0)};
-    _issquare  = n => (_iszero(Math.sqrt(n)));
-    _iscubic   = n => (_iszero(Math.cbrt(n)));
-    _isprime   = n => {};
-    _isfibo    = n => {};
+    const _isnatural = n => (_isint(n)&&(n>0));
+    const _iswhole   = n => (_isint(n)&&(n>=0));
+    const _issquare  = n => is_square(n);
+    const _iscubic   = n => is_cube(n);
+    const _isprime   = n => is_prime(n);
+    const _isfibo    = n => {
+        let o, i=1;
+        do {
+            o = fibonacci(i++);
+        } while (o < n);
+        return o == n;
+    };
 
     // Number classification (relationship)
-    _isfactorof   = n => {};
-    _isproductof  = n => {};
-    _isratioof    = n => {};
-    _ispower      = n => {};
-    _issumof      = n => {};
-    _isdiffof     = n => {};
+    const _isfactorof   = (n,a) => is_factor(n, a);
+    const _ismultipleof = (n,a) => is_multiple(n, a);
+    const _ispowerof    = (n,a) => is_power(n, a);
 
     return {
         title   : 'Data Types API',
-        version : boss.version, 
-        comment : boss.comment, 
+        version : boss.version,
+        comment : boss.comment,
         coffee  : boss.tipme,
         state   : _state,
         // API
-        data : { 
+        data : {
             type : {
                 names: _typenames,
                 codes: _typecodes
@@ -382,21 +384,21 @@ function init() {
             typecode : _typecode
         },
         ispixel : {
-            point           : TODO("ispixel.point"), 
-            size            : TODO("ispixel.size"), 
+            point           : TODO("ispixel.point"),
+            size            : TODO("ispixel.size"),
             rect            : TODO("ispixel.rect"),
-            rectangle       : TODO("ispixel.rectangle"),           
+            rectangle       : TODO("ispixel.rectangle"),
         },
         isgeom : {
-            real            : TODO("isgeom.real"), 
-            imag            : TODO("isgeom.imag"), 
-            imaginary       : TODO("isgeom.imaginary"), 
+            real            : TODO("isgeom.real"),
+            imag            : TODO("isgeom.imag"),
+            imaginary       : TODO("isgeom.imaginary"),
             complex         : TODO("isgeom.complex"),
             vector : {
                 cart        : TODO("isgeom.vector.cart"),
                 rect        : TODO("isgeom.vector.rect"),
-                polar       : TODO("isgeom.vector.polar"), 
-                cyl         : TODO("isgeom.vector.cyl"),    
+                polar       : TODO("isgeom.vector.polar"),
+                cyl         : TODO("isgeom.vector.cyl"),
                 cartesian   : TODO("isgeom.vector.cartesian"),
                 rectangular : TODO("isgeom.vector.rectangular"),
                 cylindrical : TODO("isgeom.vector.cylindrical"),
@@ -405,31 +407,25 @@ function init() {
             plane           : TODO("isgeom.plane"),
             ray             : TODO("isgeom.ray"),
             line            : TODO("isgeom.line"),
-            pane            : TODO("isgeom.pane"), 
+            pane            : TODO("isgeom.pane"),
             angles          : TODO("isgeom.angle"),
         },
         isnum : {
-            todo : {
-                natural       : _isnatural, 
-                whole         : _iswhole,
-                prime         : _isprime,
-                square        : _issquare,
-                cubic         : _iscubic,
-                of : {
-                    factor    : TODO("isnum.of.factor" ), 
-                    product   : TODO("isnum.of.product"), 
-                    ratio     : TODO("isnum.of.ratio"  ), 
-                    power     : TODO("isnum.of.power"  ), 
-                    sum       : TODO("isnum.of.sum"    ),                        
-                    diff      : TODO("isnum.of.diff"   ),                        
-                }
-            },
-            finite        : _isfin, 
+            natural       : _isnatural,
+            whole         : _iswhole,
+            square        : _issquare,
+            cubic         : _iscubic,
+            prime         : _isprime,
+            fibo          : _isfibo,
+            factor        : _isfactorof,
+            multiple      : _ismultipleof,
+            power         : _ispowerof,
+            finite        : _isfin,
             bigint        : _isbig,
-            integer       : _isint, 
-            zero          : _iszero, 
-            one           : _isone, 
-            positive      : _ispos,   
+            integer       : _isint,
+            zero          : _iszero,
+            one           : _isone,
+            positive      : _ispos,
             within        : _iswithin,
             tiny          : _istiny,
             huge          : _ishuge,
@@ -446,7 +442,7 @@ function init() {
         },
         isobject : {
             instance    : _isinst,
-            iterable    : _isiterable, 
+            iterable    : _isiterable,
             enumerable  : _isenumerable,
             array       : _isarray
         },
@@ -461,13 +457,13 @@ function init() {
                 code : _istypecode,
             },
             "null"          : _isnull,
-            defined         : _isdef, 
+            defined         : _isdef,
             "undefined"     : _isundef,
-            boolean         : _isbool, 
+            boolean         : _isbool,
             object          : _isobj,
-            string          : _isstr, 
-            symbol          : _issym, 
-            nan             : _isnan, 
+            string          : _isstr,
+            symbol          : _issym,
+            nan             : _isnan,
             number          : _isnum,
             "function"      : _isfn,
         },
@@ -500,7 +496,7 @@ function init() {
     // See: errno codes
     // https://www.man7.org/linux/man-pages/man3/errno.3.html
 
-    const _throw = (e, o) => { 
+    const _throw = (e, o) => {
         e = new Error(e);
         e.ncs = o;
         throw e;
@@ -508,13 +504,13 @@ function init() {
 
     // const _ERANGE = "🚨 Argument is out of range";
     // const _throw_erange = () => _throw(_ERANGE);
-    
+
     const _EINVAL = "🚨 Invalid argument";
     const _throw_einval = (o, t) => {
         const s = `${_EINVAL} =|> expected ${t||'?'}`;
         _throw(s, o);
     }
-    
+
     const _EILSEQ = "🚨 Illegal sequence";
     const _throw_eilseq = o => {
         _throw(_EILSEQ, o);
@@ -525,7 +521,7 @@ function init() {
 
     const _ispnt    = o => ti.isdef(o.i) && ti.isdef(o.j);
     const _issize   = o => ti.isdef(o.w) && ti.isdef(o.h);
-    const _isrect   = o => 
+    const _isrect   = o =>
            ti.isdef(o.left  )
         && ti.isdef(o.top   )
         && ti.isdef(o.right )
@@ -534,36 +530,36 @@ function init() {
     const _isvec2   = o => ti.isdef(o.x) && ti.isdef(o.y);
     const _isvec3   = o => _isvec2(o) && ti.isdef(o.z);
     const _isvec4   = o => _isvec3(o) && ti.isdef(o.w);
-    const _isray2   = o => 
-           _isvec2(o.origin) 
+    const _isray2   = o =>
+           _isvec2(o.origin)
         && _isvec2(o.normal);
-    const _isray3   = o => 
-           _isvec3(o.origin) 
+    const _isray3   = o =>
+           _isvec3(o.origin)
         && _isvec3(o.normal);
-    const _isplane  = o => 
+    const _isplane  = o =>
            ti.isdef(o.a)
         && ti.isdef(o.b)
         && ti.isdef(o.c)
         && ti.isdef(o.d);
-    const _ispane   = o => 
+    const _ispane   = o =>
            ti.isdef(o.x)
         && ti.isdef(o.y)
         && ti.isdef(o.w)
         && ti.isdef(o.h);
-    const _isline2  = o => 
+    const _isline2  = o =>
            _isvec2(o.origin)
         && _isvec2(o.target);
-    const _isline3  = o => 
+    const _isline3  = o =>
            _isvec3(o.origin)
         && _isvec3(o.target);
-    const _ispol  = o => 
+    const _ispol  = o =>
            ti.isdef(rho)
         && ti.isdef(theta);
     const _issph = o =>
            ti.isdef(rho)
         && ti.isdef(theta)
         && ti.isdef(phi);
-    const _iscyl = o => 
+    const _iscyl = o =>
            ti.isdef(rho)
         && ti.isdef(theta)
         && ti.isdef(zeta);
@@ -574,8 +570,8 @@ function init() {
 
     // Type Name (key) from Code
     ti.type_names = [
-        "complex", 
-        "plane",  "pane", 
+        "complex",
+        "plane",  "pane",
         "ray3",   "line3",
         "ray2",   "line2",
         "vecsph", "veccyl",    "vecpol",
@@ -585,9 +581,9 @@ function init() {
     ];
 
     // Type Code from Name (key)
-    ti.type_code = key => 
+    ti.type_code = key =>
         (a=>a.indexOf(key))(ti.type_names);
-    
+
         // Type Name from Instance
     ti.typeof = o => {
         ;[
@@ -596,7 +592,7 @@ function init() {
             _isray2,   _isline2,
             _issph,    _iscyl,    _ispol,
             _isvec4,   _isvec3,   _isvec2,
-            _issize,   _isrect,   _ispnt, 
+            _issize,   _isrect,   _ispnt,
             _isangles
         ].findIndex(fn=>fn(o));
     }
@@ -684,7 +680,7 @@ function init() {
         return parseInt(_R(n)) || 0;
     };
     // _I.vec4 = n => _vec4(_I(n));
-    
+
     // Convert to REAL
     const _R = n => {
        if (ti.is.object(n)) {
@@ -695,7 +691,7 @@ function init() {
        return 0;
     };
     // _R.vec4 = n => _vec4(_R(n));
-    
+
     // Convert to COMPLEX
     const _C = n => {
         return _cplx(_vec4(n));
@@ -713,7 +709,7 @@ function init() {
             return _vec4(k*v.x, k*v.y, k*v.z, k*v.w)
         }
     }
-    
+
     // Reduce a vector by one dimension
     const _vec_descend = v => {
         const t = ti.typeof(v);
@@ -774,7 +770,7 @@ function init() {
     const _dot = (u, v) => {
         TODO("dot");
     }
-    
+
     const _cross  = (u, v) => {
         TODO("cross");
     }
@@ -873,11 +869,11 @@ function init() {
             top    = _I(top);
             bottom = _I(bottom);
         };
-        return { 
-            left, 
-            top, 
-            right, 
-            bottom 
+        return {
+            left,
+            top,
+            right,
+            bottom
         };
     }
     //------------------------------------------
@@ -1211,10 +1207,10 @@ function init() {
     //------------------------------------------
 
     _vecsph.to.cyl = o => {
-        TODO("Convert spherical to cylindrical");        
+        TODO("Convert spherical to cylindrical");
     }
     _vecsph.to.pol = o => {
-        TODO("Convert spherical to polar");        
+        TODO("Convert spherical to polar");
     }
     _vecsph.to.vec4 = _vecsph.vec4;
 
@@ -1242,15 +1238,15 @@ function init() {
     }
     _veccyl.vec4 = o => {
         _veccyl.assert(o);
-        TODO("Convert cylindrical to vec4");        
+        TODO("Convert cylindrical to vec4");
     }
     //------------------------------------------
 
     _veccyl.to.sph = o => {
-        TODO("Convert cylindrical to spherical");        
+        TODO("Convert cylindrical to spherical");
     }
     _veccyl.to.pol = o => {
-        TODO("Convert cylindrical to polar");        
+        TODO("Convert cylindrical to polar");
     }
     _veccyl.to.vec4 = _veccyl.vec4;
 
@@ -1269,7 +1265,7 @@ function init() {
     }
     _line2.vec4 = o => {
         _line2.assert(o);
-        TODO("_line2.vec4");        
+        TODO("_line2.vec4");
     }
     //------------------------------------------
 
@@ -1290,10 +1286,10 @@ function init() {
     }
     _line3.vec4 = o => {
         _line3.assert(o);
-        TODO("_line3.vec4");        
+        TODO("_line3.vec4");
     }
     //------------------------------------------
-    
+
     _line3.to.vec4 = _line2.vec4;
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1312,7 +1308,7 @@ function init() {
     }
     _angles.vec4 = o => {
         _line3.assert(o);
-        TODO("_angles.vec4");        
+        TODO("_angles.vec4");
     }
     //------------------------------------------
 
@@ -1496,7 +1492,7 @@ function init() {
         dot       : _dot,
         cross     : _cross,
         perpdot   : _dot_perp,
-        Re        : _re,  
+        Re        : _re,
         Im        : _im,
         arg       : _arg,
         mod       : _mod,
@@ -1570,9 +1566,9 @@ function init() {
     const _doc = document;
     const _ti = CrustyRusty.api.typeinfo;
 
-    const _qfn = [ 
+    const _qfn = [
         'querySelector',
-        'querySelectorAll' 
+        'querySelectorAll'
     ];
 
     const _qse = _qfn[0];
@@ -1581,14 +1577,14 @@ function init() {
     const _qryAx = (css, p=_doc) => (p[_qsa])(css);
     const _qry1  = css => _qry1x(css, _doc);
     const _qryA  = css => _qryAx(css, _doc);
-    
+
     const _query = {
-        qfn     : _qfn, 
-        qse     : _qse, 
-        qsa     : _qsa, 
-        qry1    : _qry1, 
+        qfn     : _qfn,
+        qse     : _qse,
+        qsa     : _qsa,
+        qry1    : _qry1,
         qry1x   : _qry1x,
-        qryA    : _qryA, 
+        qryA    : _qryA,
         qryAx   : _qryAx
     };
 
@@ -1622,7 +1618,7 @@ function init() {
     };
 
     const _ai    = ()  => _visit(_chatgpt);
-    
+
     // http://dave-tower/nyteowl/app/zing
     const _zing  = qry  => {
         const host = boss.host;
@@ -1631,7 +1627,7 @@ function init() {
         url.search = new URLSearchParams(qry); // _params
         return _visit(url);
     };
-    
+
     const _bing  = qry => {
         const host = boss.host;
         const path = `https://www.bing.com/search`;
@@ -1659,9 +1655,9 @@ function init() {
     // Find or create
     const _focr = (tag, parent) =>
     {
-       let e = qry1(tag); 
+       let e = qry1(tag);
        if (e) return e;
-       e = el(tag); 
+       e = el(tag);
        if (parent) parent.appendChild(e);
        return e;
     }
@@ -1677,13 +1673,13 @@ function init() {
            return s  ?
            el2(t, s) :
            el1(t)    ;
-        }    
+        }
         return _el;
     })() : el;
 
     // https://chat.openai.com/c/01577e4d-7847-4f7c-82c8-7ce052ace62d
-    window.el = { 
-        ... window.el, 
+    window.el = {
+        ... window.el,
         ... {
             // Long forms (for old guys like me)
             find           : _qry1,
@@ -1754,7 +1750,7 @@ function init() {
     const _I = n => {
         return parseInt(n);
     };
-    
+
     // Math API
     const _math = {
         int     : _I,
@@ -1778,10 +1774,10 @@ function init() {
 
     // Rect
     const _rect = (left, top, right, bottom) => {
-        return { 
-            left   : _I(left), 
+        return {
+            left   : _I(left),
             top    : _I(top),
-            right  : _I(right), 
+            right  : _I(right),
             bottom : _I(bottom)
         };
     }
@@ -1798,16 +1794,16 @@ function init() {
         (o => _size(o.width, o.height))(_wnd.screen);
 
     // View
-    const _view_size = () => 
-        (o => _size(o.innerWidth, o.innerHeight))(_wnd);        
+    const _view_size = () =>
+        (o => _size(o.innerWidth, o.innerHeight))(_wnd);
 
     // Document
-    const _document_size = () => 
+    const _document_size = () =>
         (o => _size(o.scrollWidth, o.scrollHeight))
             (_doc.documentElement);
 
     // Scroll
-    const _scroll_position = () => 
+    const _scroll_position = () =>
     (o =>
         _pnt(
             o.scrollX || (o.pageXOffset || 0),
@@ -1821,8 +1817,8 @@ function init() {
         version : boss.version,
         comment : boss.comment,
         system: {
-            window   : _wnd, 
-            document : _doc, 
+            window   : _wnd,
+            document : _doc,
             typeinfo : _ti,
         },
         math : _math,
@@ -1844,7 +1840,7 @@ function init() {
 const LOOK = boss.look;
 const TODO = boss.todo;
 boss.add_api(api_key, init);
-    
+
 })(CrustyRusty, 'bom');
 
 
@@ -1891,4 +1887,4 @@ boss.add_api(api_key, init);
 // Anthem
 // Emoji Magic
 // Ping
-// 
+//
