@@ -321,7 +321,7 @@ const save_png_file = (img, filename, ask=false) => {
 // ❌ Not yet listed
 // Handy short form for JPG save
 const save_jpg_file = (img, filename, ask=false) => {
-    return save_imafe_file({
+    return save_image_file({
         source : img,
         mimeType : "image/jpeg"
     }, filename + ".jpg", ask);
